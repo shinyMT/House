@@ -1,6 +1,9 @@
 # -*- coding:utf-8 -*-
 # Author:thy
+import socket
 import sys
+import time
+
 from bs4 import BeautifulSoup
 import re
 import urllib.request, urllib.error
@@ -9,9 +12,9 @@ import random
 
 # 请求头
 USER_AGENTS = [
-    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
     "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/92.0.4515.159 "
     "Safari/537.36",
+    "Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1; SV1; AcooBrowser; .NET CLR 1.1.4322; .NET CLR 2.0.50727)",
     "Mozilla/4.0 (compatible; MSIE 7.0; Windows NT 6.0; Acoo Browser; SLCC1; .NET CLR 2.0.50727; Media Center PC 5.0; "
     ".NET CLR 3.0.04506)",
     "Mozilla/4.0 (compatible; MSIE 7.0; AOL 9.5; AOLBuild 4337.35; Windows NT 5.1; .NET CLR 1.1.4322; .NET CLR "
@@ -45,6 +48,7 @@ def createHeader():
     headers["Referer"] = "http://www.ke.com"
     return headers
     pass
+
 
 # 获取指定的url的html网页结构
 def askUrl(url):
